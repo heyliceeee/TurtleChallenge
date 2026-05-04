@@ -3,6 +3,7 @@ import random
 
 tim = Turtle()
 colours = ["CornflowerBlue", "DarkOrchid", "IndianRed", "DeepSkyBlue", "LightSeaGreen", "wheat", "SlateGray", "SeaGreen"]
+directions = [0, 90, 180, 270] # 0 - east | 90 - north | 180 - west | 270 - south
 
 def draw_square():
     '''
@@ -40,6 +41,17 @@ def draw_triangle_square_pentagon_hexagon_heptagon_octagon_nonagon_decagon():
     for shape_side_n in range(3, 11):
         tim.color(random.choice(colours))
         draw_geometric_figure(shape_side_n)
+def draw_random_walk():
+    """
+    draw a walk with random orientation and color
+    """
+    for _ in range(100):
+        tim.color(random.choice(colours)) # get random color
+        tim.pensize(10) # set pen size
+        tim.speed(10) # set speed (0 - fasted | 10 - fast | 6 - normal | 3 - slow | 1 - slowest)
+
+        tim.setheading(random.choice(directions)) # random movements to north, east, west or south
+        tim.forward(30) # move forward 30 steps
 
 
 tim.shape("turtle") # set a turtle shape
@@ -47,7 +59,7 @@ tim.shape("turtle") # set a turtle shape
 #draw_square()
 #draw_dashed_line()
 #draw_triangle_square_pentagon_hexagon_heptagon_octagon_nonagon_decagon()
-
+draw_random_walk()
 
 screen = Screen()
 screen.exitonclick() # screen close only if you click him
