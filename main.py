@@ -15,7 +15,6 @@ def random_color():
     b = random.randint(0, 255)
 
     return r, g, b
-
 def draw_square():
     '''
     draw a square
@@ -43,7 +42,7 @@ def draw_geometric_figure(num_sides):
     '''
     angle = 360 / num_sides
     for _ in range(num_sides):
-        tim.forward(100)
+        tim.forward(100)  # move forward 100 steps
         tim.right(angle)
 def draw_triangle_square_pentagon_hexagon_heptagon_octagon_nonagon_decagon():
     """
@@ -63,14 +62,23 @@ def draw_random_walk():
 
         tim.setheading(random.choice(directions)) # random movements to north, east, west or south
         tim.forward(30) # move forward 30 steps
-
+def draw_spirograph(size_gap):
+    """
+    draw a spirograph
+    """
+    tim.speed(0)  # set the fastest speed
+    for _ in range(int(360 / size_gap)):
+        tim.color(random_color()) # set random color
+        tim.circle(100) # circle with 100 radius
+        tim.setheading(tim.heading() + size_gap) # rotate with size_gap degrees difference
 
 tim.shape("turtle") # set a turtle shape
 
 #draw_square()
 #draw_dashed_line()
 #draw_triangle_square_pentagon_hexagon_heptagon_octagon_nonagon_decagon()
-draw_random_walk()
+#draw_random_walk()
+draw_spirograph(5)
 
 screen = Screen()
 screen.exitonclick() # screen close only if you click him
