@@ -1,9 +1,20 @@
-from turtle import Turtle, Screen
+from turtle import Turtle, Screen, colormode
 import random
 
 tim = Turtle()
-colours = ["CornflowerBlue", "DarkOrchid", "IndianRed", "DeepSkyBlue", "LightSeaGreen", "wheat", "SlateGray", "SeaGreen"]
+colormode(255) # rgb
 directions = [0, 90, 180, 270] # 0 - east | 90 - north | 180 - west | 270 - south
+
+def random_color():
+    """
+    generate a random color
+    :return: a random color
+    """
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+
+    return r, g, b
 
 def draw_square():
     '''
@@ -39,14 +50,14 @@ def draw_triangle_square_pentagon_hexagon_heptagon_octagon_nonagon_decagon():
     draw a triangle, square, pentagon, hexagon, heptagon, octagon, nonagon, decagon
     """
     for shape_side_n in range(3, 11):
-        tim.color(random.choice(colours))
+        tim.color(random_color())
         draw_geometric_figure(shape_side_n)
 def draw_random_walk():
     """
     draw a walk with random orientation and color
     """
     for _ in range(100):
-        tim.color(random.choice(colours)) # get random color
+        tim.color(random_color()) # get random color
         tim.pensize(10) # set pen size
         tim.speed(10) # set speed (0 - fasted | 10 - fast | 6 - normal | 3 - slow | 1 - slowest)
 
